@@ -1,16 +1,22 @@
-<h1><%= @restaurant.name %></h1>
-<p><em><%= @restaurant.category.capitalize %></em></p>
-<p>Address: <%= @restaurant.address %></p>
-<p>Phone number: <%= @restaurant.phone_number %></p>
-<h3>Reviews</h3>
-<% unless @restaurant.reviews.empty? %>
-  <ul>
-    <% @restaurant.reviews.each do |review| %>
-      <li><em><%= review.content %></em> <%= review.rating %></li>
+<div class="card text-center">
+  <div class="card-header">
+    <%= @restaurant.category.capitalize %>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= @restaurant.name %></h5>
+    <p class="card-text"><%= @restaurant.address %></p>
+    <p class="card-text">Tel: <%= @restaurant.phone_number %></p>
+    <%= link_to 'Add a review', new_restaurant_review_path(@restaurant.id), class: 'btn btn-primary text-light rounded' %>
+  </div>
+  <div class="card-footer text-muted">
+    <% unless @restaurant.reviews.empty? %>
+      <ul class='list-group'>
+        <% @restaurant.reviews.each do |review| %>
+          <li class='list-group-item'><em><%= review.content %></em> <%= review.rating %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No reviews yet</p>
     <% end %>
-  </ul>
-<% else %>
-  <p><em>No reviews yet</em></p>
-<% end %>
-<%= link_to 'Add a review', new_restaurant_review_path(@restaurant.id), class: 'btn btn-primary' %>
-<br>
+  </div>
+</div>

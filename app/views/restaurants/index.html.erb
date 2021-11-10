@@ -1,6 +1,8 @@
-<h2>Restaurants</h2>
-<ul>
-  <% @restaurants.each do |restaurant| %>
-  <li><%= link_to restaurant.name, restaurant_path(restaurant.id) %> (<em><%= restaurant.category %></em>)</li>
-  <% end %>
-</ul>
+<div class='container w-75'>
+  <h2 class="bg-warning text-center rounded text-light">Our Restaurants</h2>
+  <ul class='list-group'>
+    <% @restaurants.each do |restaurant| %>
+      <%= link_to restaurant.name, restaurant_path(restaurant.id), class: 'list-group-item list-group-item-action' %>
+    <% end %>
+  </ul>
+</div>
