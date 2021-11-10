@@ -6,13 +6,23 @@
     <h5 class="card-title"><%= @restaurant.name %></h5>
     <p class="card-text"><%= @restaurant.address %></p>
     <p class="card-text">Tel: <%= @restaurant.phone_number %></p>
-    <%= link_to 'Add a review', new_restaurant_review_path(@restaurant.id), class: 'btn btn-primary text-light rounded' %>
+    <div class='w-50 container'>
+      <%= simple_form_for [@restaurant, @review], url: reviews_restaurant_path(@restaurant.id) do |f| %>
+        <%= f.input :content, as: :text, placeholder: 'Been here? Write a review...', label: false %>
+        <%= f.input :rating, placeholder: 'Rate from 1 to 5', label: false %>
+        <%= f.submit "Leave a review", class: 'btn w-100 rounded my-btn' %>
+      <% end %>
+    </div>
   </div>
   <div class="card-footer text-muted">
     <% unless @restaurant.reviews.empty? %>
       <ul class='list-group'>
         <% @restaurant.reviews.each do |review| %>
-          <li class='list-group-item'><em><%= review.content %></em> <%= review.rating %></li>
+          <% stars = [] %>
+          <% review.rating.times do %>
+            <% stars << '⭐' %>
+          <% end %>
+          <li class='list-group-item'><em><%= review.content %></em> <%= stars.join %></li>
         <% end %>
       </ul>
     <% else %>

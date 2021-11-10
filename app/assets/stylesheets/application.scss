@@ -10,3 +10,27 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+body {
+  background: url('https://media.istockphoto.com/photos/village-pub-brick-wall-with-tables-and-chairs-picture-id111950974?b=1&k=20&m=111950974&s=170667a&w=0&h=pKD3xFFnkAFFWkdLAAohpFGAEPLxvnPmXq7bDBIEW50=');
+  background-attachment: fixed;
+  background-size: 100vw;
+  height: 100%;
+}
+.my-btn {
+  background-color: #E87461;
+  color: white;
+  height: 40px;
+  transition: .3s;
+  &:hover {
+    background-color: #c26152;
+    color: white;
+  }
+}
+
+.my-heading {
+  display: flex;
+  height: 56px;
+  justify-content: center;
+  align-items: center;
+}

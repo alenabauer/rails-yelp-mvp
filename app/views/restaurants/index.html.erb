@@ -1,8 +1,8 @@
 <div class='container w-75'>
-  <h2 class="bg-warning text-center rounded text-light">Our Restaurants</h2>
+  <h2 class="bg-dark text-center rounded text-light my-heading">Explore</h2>
   <ul class='list-group'>
     <% @restaurants.each do |restaurant| %>
-      <%= link_to restaurant.name, restaurant_path(restaurant.id), class: 'list-group-item list-group-item-action' %>
+      <%= link_to restaurant.name, restaurant_path(restaurant.id), class: 'list-group-item list-group-item-action list-group-item-secondary' %>
     <% end %>
   </ul>
 </div>
